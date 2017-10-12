@@ -28,7 +28,7 @@ int main(){
 	
 }
 
-void inscore(char klub[100][20], int klasmen[100][10], int maks){
+void inscore(char klub[100][20], int maks){
 	int i;
 	int j;
 	int total=1;
@@ -49,11 +49,17 @@ void inscore(char klub[100][20], int klasmen[100][10], int maks){
 	}
 }
 
-void updateklasmen(char klub[100][20], int klasmen[100][10], int maks){
+void updateklasmen(int klasmen[100][10], int maks){
 	int i;
 	int x;
-	int hasil;
+
 	
+	
+}
+
+void klasemen(char klub[100][20], int klasmen[100][10], int maks) {
+	
+	int hasil;
 	system("cls");
 	printf("Klasmen Sepak Bola");
 	printf("\nNama Team\tMain\tM\tS\tK\tGM\tGK\tSG\tPoin");
@@ -66,8 +72,4 @@ void updateklasmen(char klub[100][20], int klasmen[100][10], int maks){
 			}
 			printf("%d",hasil);
 		}
-}
-
-void klasemen(char klub[100][20], int klasmen[100][10], int maks) {
-	
 }
