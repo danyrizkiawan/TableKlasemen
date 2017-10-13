@@ -5,12 +5,12 @@ void inscore();
 void updateklasmen();
 
 int skor[100][100];
+int klasmen [100][10];
 
 int main(){
 	int i;
 	int maks=0;
 	char klub [100][20];
-	int klasmen [100][10];
 	int skor[100][100];
 	int s[100];
 	
@@ -45,20 +45,41 @@ void inscore(char klub[100][20], int maks){
 			printf("\nAWAY\t%s\t\t\t",klub[j]);
 			scanf("%d",&skor[i][j]);
 			total++;
+			updateklasmen (skor, i, j);
 		}
 	}
 }
 
-void updateklasmen(int klasmen[100][10], int maks){
-	int i;
-	int x;
-
+void updateklasmen(int skor[100][100], int home, int away){
+	klasmen[home][0]++;	
+	klasmen[home][4]+=skor[away][home];
+	klasmen[home][5]+=skor[home][away];
+	klasmen[home][6]=klasmen[home][4]-klasmen[home][5];
+	klasmen[away][0]++;	
+	klasmen[away][4]+=skor[home][away];
+	klasmen[away][5]+=skor[away][home];
+	klasmen[away][6]=klasmen[away][4]-klasmen[away][5];
 	
+	if (skor[away][home] > skor[home][away]) {
+		klasmen[home][1]++;
+		klasmen[home][7]+=3;
+		klasmen[away][3]++;
+		
+	}
+	else if (skor[away][home] < skor[home][away]) {
+		klasmen[away][1]++;
+		klasmen[away][7]+=3;
+		klasmen[home][3]++;
+	}
+	else if (skor[away][home] == skor[home][away]) {
+		klasmen[away][2]++;
+	}
 	
 }
 
 void klasemen(char klub[100][20], int klasmen[100][10], int maks) {
 	
+	int i,x;
 	int hasil;
 	system("cls");
 	printf("Klasmen Sepak Bola");
